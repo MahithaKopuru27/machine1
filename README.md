@@ -1,40 +1,32 @@
-# Student Performance Prediction Model
+This repository contains code for creating a predictive model aimed at estimating student performance based on various factors like study hours, quiz scores, forum participation, and previous grades. The model, developed in R, utilizes supervised learning techniques.
 
-This repository contains code for building a predictive model to estimate student performance based on various factors such as study hours, quiz scores, forum participation, and previous grades. The model is implemented in R using supervised learning techniques.
+Generating Dataset
+The dataset is artificially generated to resemble real student performance data. It encompasses attributes such as study hours, quiz scores, forum participation, previous grades, and final grades. To ensure reproducibility, the simulated data is produced with a fixed random seed.
 
-## Dataset Generation
+Model Development
+Data Division: The dataset is divided into training and testing subsets in an 80:20 ratio, enabling model training on a portion of the data while validating its performance on unseen instances.
 
-The dataset is simulated to mimic student performance data. It includes features such as study hours, quiz scores, forum participation, previous grades, and final grades. The simulated data is generated with a fixed random seed for reproducibility.
+Model Selection: Logistic regression is employed as the predictive model owing to its suitability for binary classification tasks. The model is instantiated using the {parsnip} package, with the engine set to a generalized linear model (glm) for logistic regression.
 
-## Model Development
+Feature Engineering: A recipe is crafted to preprocess the data prior to model training. It outlines the target variable (FinalGrades) and predictor variables (StudyHours, QuizScores, ForumPosts, PreviousGrades).
 
-1. **Data Splitting**: The dataset is split into training and testing sets with a ratio of 80:20, respectively. This allows for training the model on a subset of the data and evaluating its performance on unseen data.
+Model Training: The model is trained on the training dataset using the designated workflow, which encompasses both the model and recipe.
 
-2. **Model Specification**: Logistic regression is chosen as the predictive model due to its suitability for binary classification tasks. The model is specified using the `{parsnip}` package, and the engine is set to a generalized linear model (glm) for logistic regression.
+Model Evaluation: The trained model undergoes evaluation on the testing dataset to gauge its predictive capability. Performance metrics like accuracy and prediction interval are computed to assess the model's effectiveness in forecasting student grades.
 
-3. **Feature Engineering**: A recipe is created to preprocess the data before model training. The recipe specifies the outcome variable (`FinalGrades`) and predictor variables (`StudyHours`, `QuizScores`, `ForumPosts`, `PreviousGrades`).
+How to Use
+To execute the code:
 
-4. **Model Training**: The model is trained on the training dataset using the specified workflow, which includes both the model and recipe.
+Clone this repository onto your local machine.
+Open the R script or R Markdown file in your preferred R development environment.
+Ensure installation of the required packages listed in the script.
+Sequentially run the code to generate simulated data, train the model, and evaluate its performance.
+Dependencies
+The following R packages are necessary to run the code:
 
-5. **Model Evaluation**: The trained model is evaluated on the testing dataset to assess its predictive performance. Evaluation metrics such as accuracy and prediction interval are computed to measure the model's effectiveness in predicting student grades.
-
-## Usage
-
-To run the code:
-
-1. Clone this repository to your local machine.
-2. Open the R script or R Markdown file in your preferred R development environment.
-3. Install the required packages listed in the script.
-4. Run the code sequentially to generate simulated data, train the model, and evaluate its performance.
-
-## Dependencies
-
-The following R packages are required to execute the code:
-
-- `{tidymodels}`: For modeling and preprocessing data.
-- `{rsample}`: For data splitting and resampling.
-- `{parsnip}`: For specifying machine learning models.
-- `{dplyr}`: For data manipulation.
-- `{ggplot2}`: For data visualization.
-
-Install these packages using the `install.packages()` function if not already installed.
+{tidymodels}: For data modeling and preprocessing.
+{rsample}: For data splitting and resampling.
+{parsnip}: For specifying machine learning models.
+{dplyr}: For data manipulation.
+{ggplot2}: For data visualization.
+Install these packages using the install.packages() function if they are not already installed.
